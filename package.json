@@ -1,0 +1,18 @@
+{
+  "name": "socketio-live-reload",
+  "version": "1.0.0",
+  "description": "in browser live reload using socketIO",
+  "main": "./lib/index.js",
+  "keywords": [
+    "socketIO",
+    "live-reload",
+    "reload"
+  ],
+  "author": "ben eaves",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "chokidar": "^2.0.3",
+    "socket.io": "^2.1.0"
+  }
+}
