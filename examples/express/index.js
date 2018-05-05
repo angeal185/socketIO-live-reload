@@ -1,7 +1,7 @@
 const app = require('express')(),
 http = require('http').Server(app),
 io = require('socket.io')(http),
-slr = require('socketIO-live-reload'),
+slr = require('socketio-live-reload'),
 port = 8080;
 
 app.get('/', function(req, res){
@@ -17,7 +17,7 @@ var watchOptions = {
 }
 
 io.on('connection', function (socket) {
-  //start socketIO-live-reload on connection.
+  //start socketio-live-reload on connection.
   slr.init(socket,watchFiles,watchOptions)
 });
 

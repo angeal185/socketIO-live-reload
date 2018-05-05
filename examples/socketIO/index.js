@@ -1,7 +1,7 @@
 const app = require('http').createServer(handler),
 io = require('socket.io')(app),
 fs = require('fs'),
-slr = require('socketIO-live-reload'),
+slr = require('socketio-live-reload'),
 chalk = require('chalk');
 app.listen(8080);
 
@@ -30,6 +30,6 @@ var watchOptions = {
 }
 
 io.on('connection', function (socket) {
-  //start socketIO-live-reload on connection.
+  //start socketio-live-reload on connection.
   slr.init(socket,watchFiles,watchOptions)
 });

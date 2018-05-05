@@ -1,6 +1,6 @@
 {
   "name": "socketio-live-reload",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "in browser live reload using socketIO",
   "main": "lib/index.js",
   "scripts": {
