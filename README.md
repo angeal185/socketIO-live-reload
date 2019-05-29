@@ -79,10 +79,10 @@ slr.init(function(err,i){
 //defaults
 
 {
-  port: 8888,
-  URL: 'http://localhost',
-  reload: true,
-  reloadTime: 1000,
+  port: 8888, // socket.io server port
+  URL: 'http://localhost', // socket.io server url
+  reload: true, // auto reload enabled
+  reloadTime: 1000, // time before reload
   debug: true //debug toolbar
 }
 
