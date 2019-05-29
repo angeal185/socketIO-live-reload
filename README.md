@@ -20,7 +20,8 @@ $ npm install socketio-live-reload --save-dev
 
 {
   "server":{ // slr server config
-    "port": 8888
+    "port": 8888,
+    "cache": "no-cache"
   },
   "watch": ["./*"], //watched files
   "options": {
