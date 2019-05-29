@@ -1,11 +1,14 @@
 {
   "name": "socketio-live-reload",
-  "version": "1.0.3",
-  "description": "in browser live reload using socketIO",
-  "main": "lib/index.js",
+  "version": "1.0.4",
+  "description": "in browser live reload using socket.io",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "client/"
+  ],
   "keywords": [
     "socketIO",
     "live-reload",
@@ -17,7 +20,7 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "chokidar": "^2.0.3",
-    "socket.io": "^2.1.0"
+    "socket.io": "^2.2.0"
   },
   "homepage": "https://github.com/angeal185/socketio-live-reload",
   "repository": {

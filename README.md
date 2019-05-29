@@ -18,137 +18,105 @@ in browser live reload using socketIO.
 
 ```js
 
+// defaults ~ created on first run and
+// can be edited in ./SLR.json
+{
+  "server":{ // slr server config
+    "url": "http://localhost",
+    "port": 8888
+  },
+  "watch": ["./*"], //watched files
+  "options": {
+    "ignored": [ //ignored files
+      "./node_modules/*"
+    ],
+    "interval": 100,
+    "depth": 99,
+    "ignoreInitial": false,
+    "followSymlinks": true,
+    "cwd": "./",
+    "disableGlobbing": false,
+    "usePolling": true,
+    "binaryInterval": 300,
+    "alwaysStat": false,
+    "awaitWriteFinish": {
+      "stabilityThreshold": 2000,
+      "pollInterval": 100
+    },
+    "ignorePermissionErrors": false,
+    "atomic": 100
+  },
+  "io": { //socket.io options
+    "pingInterval": 10000,
+    "pingTimeout": 5000,
+    "transports": [
+      "polling",
+      "websocket"
+    ]
+  }
+}
+
+/**
+ *  sync ~ init SLR
+ *  @param {function} cb ~ optional callback
+ **/
+
+slr.init(cb)
+
+
+//demo
 const slr = require('socketio-live-reload');
 
-// files to be watched
-var watchFiles = ["./css/style.css","./js/app.js"];
-// watch options
-var watchOptions = {
-  ignored: [
-    "*.txt",
-    "*.md"
-  ],
-  interval: 100,
-  depth: 99
-}
-
-io.on('connection', function (socket) {
-  //start socketio-live-reload on connection.
-  slr.init(socket,watchFiles,watchOptions)
+slr.init(function(err,i){
+  if(err){return console.error(err)}
+  console.log(i) // returns config options
 });
 
 ```
 
 #### client-side
 
-```html
-
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-  socket.on('reload', function(){
-    location.reload();
-  });
-</script>
-
-```
-
-### examples
-
-#### basic server-side
 
 ```js
-const app = require('http').createServer(handler),
-io = require('socket.io')(app),
-fs = require('fs'),
-slr = require('socketio-live-reload'),
-chalk = require('chalk');
-app.listen(8080);
+//defaults
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
-    res.writeHead(200);
-    res.end(data);
-  });
+{
+  port: 8888,
+  URL: 'http://localhost',
+  reload: true,
+  reloadTime: 1000,
+  debug: true //debug toolbar
 }
 
-// files to be watched
-var watchFiles = ["./css/style.css","./js/app.js"];
-// watch options
-var watchOptions = {
-  ignored: [
-    "*.txt",
-    "*.md"
-  ],
-  interval: 100,
-  depth: 99
-}
 
-io.on('connection', function (socket) {
-  //start socketio-live-reload on connection.
-  slr.init(socket,watchFiles,watchOptions)
-});
+/**
+ *  sync ~ init SLR
+ *  @param {object} config ~ optional client side config
+ *  @param {function} cb ~ optional callback
+ **/
+
+slr.init(config, cb)
 
 ```
 
-#### express server-side
-
-```js
-const app = require('express')(),
-http = require('http').Server(app),
-io = require('socket.io')(http),
-slr = require('socketio-live-reload'),
-port = 8080;
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
-
-var watchFiles = ["./css/style.css","./js/app.js"];
-// watch options
-var watchOptions = {
-  ignored: [],
-  interval: 100,
-  depth: 99
-}
-
-io.on('connection', function (socket) {
-  //start socketio-live-reload on connection.
-  slr.init(socket,watchFiles,watchOptions)
-});
-
-http.listen(port, function(){
-  console.log('listening on port:' + port);
-});
-
-```
-
-
-#### client-side
 
 ```html
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-      socket.on('reload', function(){
-        location.reload();
-      });
-    </script>
-  </body>
-</html>
-```
+<!-- DEMO -->
 
-* examples can be found in `./lib/examples`
+<!-- load styles if using debug toolbar -->
+<link rel="stylesheet" href="//localhost:8888/SLR.css">
+
+
+
+<!-- pre-packed with socket.io slim-->
+<script src="//localhost:8888/SLR_full.js"></script>
+
+
+<!-- or to load socket.io seperate -->
+<script src="//localhost:8888/socket.io/socket.io.slim.js"></script>
+<script src="//localhost:8888/slr.js"></script>
+
+<!-- init SLR -->
+<script>slr.init()</script>
+```

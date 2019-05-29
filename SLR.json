@@ -1,0 +1,35 @@
+{
+  "server":{
+    "url": "http://localhost",
+    "port": 8888
+  },
+  "watch": ["./*"],
+  "options": {
+    "ignored": [
+      "./node_modules/*"
+    ],
+    "interval": 100,
+    "depth": 99,
+    "ignoreInitial": false,
+    "followSymlinks": true,
+    "cwd": "./",
+    "disableGlobbing": false,
+    "usePolling": true,
+    "binaryInterval": 300,
+    "alwaysStat": false,
+    "awaitWriteFinish": {
+      "stabilityThreshold": 2000,
+      "pollInterval": 100
+    },
+    "ignorePermissionErrors": false,
+    "atomic": 100
+  },
+  "io": {
+    "pingInterval": 10000,
+    "pingTimeout": 5000,
+    "transports": [
+      "polling",
+      "websocket"
+    ]
+  }
+}
