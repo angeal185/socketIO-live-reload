@@ -8,9 +8,6 @@ npm:
 $ npm install socketio-live-reload --save-dev
 ```
 
-### info
-
-in browser live reload using socketIO.
 
 ### API
 
@@ -18,8 +15,9 @@ in browser live reload using socketIO.
 
 ```js
 
-// defaults ~ created on first run and
-// can be edited in ./SLR.json
+// defaults ~ created in your cwd automatically on
+// first run and can be edited in ./SLR.json
+
 {
   "server":{ // slr server config
     "url": "http://localhost",
