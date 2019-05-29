@@ -20,7 +20,6 @@ $ npm install socketio-live-reload --save-dev
 
 {
   "server":{ // slr server config
-    "url": "http://localhost",
     "port": 8888
   },
   "watch": ["./*"], //watched files
@@ -54,21 +53,10 @@ $ npm install socketio-live-reload --save-dev
   }
 }
 
-/**
- *  sync ~ init SLR
- *  @param {function} cb ~ optional callback
- **/
-
-slr.init(cb)
-
-
 //demo
 const slr = require('socketio-live-reload');
 
-slr.init(function(err,i){
-  if(err){return console.error(err)}
-  console.log(i) // returns config options
-});
+slr.init();
 
 ```
 
