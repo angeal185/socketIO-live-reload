@@ -102,7 +102,7 @@ slr.init(config, cb)
 
 <!-- or to load socket.io seperate -->
 <script src="//localhost:8888/socket.io/socket.io.slim.js"></script>
-<script src="//localhost:8888/slr.js"></script>
+<script src="//localhost:8888/SLR.js"></script>
 
 <!-- init SLR with default options-->
 <script>slr.init()</script>
